@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-const PublicForm = ({ handleForm, handleChange, formData }) => {
-
-
+const PublicForm = ({ handleForm, handleChange, formData, buttonTitle }) => {
   return (
     <form onSubmit={handleForm}>
       <input
@@ -26,7 +24,7 @@ const PublicForm = ({ handleForm, handleChange, formData }) => {
         value={formData.breed}
         onChange={handleChange}
       ></input>
-      <button type="submit">Crear mascota</button>
+      <button type="submit">{buttonTitle}</button>
     </form>
   );
 };

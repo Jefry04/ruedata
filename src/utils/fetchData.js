@@ -13,8 +13,33 @@ export const getAllPets = async () => {
 
 export const createPet = async (petData) => {
   try {
-    console.log(petData)
     const { data } = await axios.post(url, petData);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const editPet = async (petData) => {
+  const {_id} = petData;
+  const petObject = {
+    name: petData.name,
+    age: petData.age,
+    breed: petData.breed,
+  }
+  try {
+
+    const { data } = await axios.put(`${url}/${_id}`, petObject);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const deletePet = async (id) => {
+  try {
+
+    const { data } = await axios.delete(`${url}/${id}`);
     return data;
   } catch (error) {
     return error;

@@ -7,7 +7,7 @@ import { createPet, getAllPets } from "../utils/fetchData";
 
 const mockData = [
   {
-    _id: "1",
+    _id: "62f8233991111503e8bdc568",
     name: "Kiara",
     age: 2,
     breed: "Cat",
@@ -73,6 +73,7 @@ const Home = () => {
           handleForm={handleNewPet}
           handleChange={handleChange}
           formData={formData}
+          buttonTitle= "Crear mascota"
         />
       )}
     </>
