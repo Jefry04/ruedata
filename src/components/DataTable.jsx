@@ -1,10 +1,10 @@
-import { Table } from "@mantine/core";
+import { Button, Table } from "@mantine/core";
 import React, { useState } from "react";
-import { deletePet, editPet } from "../utils/fetchData";
+import { deletePet, editPet, getAllPets } from "../utils/fetchData";
 import PublicForm from "./PublicForm";
 import PublicModal from "./PublicModal";
 
-const DataTable = ({ pets }) => {
+const DataTable = ({ pets =[], setAllPets }) => {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [petData, setPetData] = useState({
     name: "",
@@ -19,7 +19,8 @@ const DataTable = ({ pets }) => {
 
   const handleEditForm = (event) => {
     event.preventDefault();
-    editPet(petData);
+    editPet(petData).then(() => getAllPets().then((response) => setAllPets(response)));
+    setOpenEditModal(false)
   };
   const handleChange = (event) => {
     event.preventDefault();
@@ -28,7 +29,7 @@ const DataTable = ({ pets }) => {
       [event.target.name]: event.target.value,
     });
   };
-  const handleDelete = (id) => deletePet(id);
+  const handleDelete = (id) => deletePet(id).then(() => getAllPets().then((response) => setAllPets(response)));
 
   return (
     <>
@@ -42,19 +43,19 @@ const DataTable = ({ pets }) => {
           </tr>
         </thead>
         {pets &&
-          pets.map((pet) => (
+          pets?.map((pet) => (
             <tbody key={pet._id}>
               <tr>
                 <td>{pet.name}</td>
                 <td>{pet.age}</td>
                 <td>{pet.breed}</td>
                 <td>
-                  <button type="button" onClick={() => handleEdit(pet)}>
+                  <Button type="button" onClick={() => handleEdit(pet)}>
                     Editar
-                  </button>
-                  <button type="button" onClick={() => handleDelete(pet._id)}>
+                  </Button>
+                  <Button type="button" onClick={() => handleDelete(pet._id)}>
                     Borrar
-                  </button>
+                  </Button>
                 </td>
               </tr>
             </tbody>

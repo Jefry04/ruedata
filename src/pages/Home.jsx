@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import AppHeader from "../components/AppHeader";
 import DataTable from "../components/DataTable";
 import PublicForm from "../components/PublicForm";
 import PublicModal from "../components/PublicModal";
@@ -28,6 +29,8 @@ const Home = () => {
       age: 0,
       breed: "",
     });
+    setOpenModal(false)
+    getAllPets().then((response) => setAllPets(response));
   };
 
   const handleChange = (event) => {
@@ -41,10 +44,8 @@ const Home = () => {
 
   return (
     <>
-      <button type="button" onClick={handleOpenModal}>
-        Nueva mascota
-      </button>
-      <DataTable pets={allPets} />
+      <AppHeader handleOpenModal={handleOpenModal}/>
+      <DataTable pets={allPets} setAllPets={setAllPets} />
       <PublicModal
         opened={openModal}
         onClose={() => setOpenModal(false)}

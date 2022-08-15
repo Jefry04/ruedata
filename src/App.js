@@ -1,13 +1,10 @@
-import AppHeader from "./components/AppHeader";
+import { useEffect } from "react";
 import Home from "./pages/Home";
+import { getAllPets } from "./utils/fetchData";
 
 function App() {
-  return (
-    <>
-      <AppHeader />
-      <Home />
-    </>
-  );
+
+  return <Home />;
 }
 
 export default App;

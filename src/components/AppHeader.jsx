@@ -2,12 +2,13 @@ import { Button } from "@mantine/core";
 import React from "react";
 import "../styles/AppHeader.css";
 
-const AppHeader = () => {
+const AppHeader = ({handleOpenModal}) => {
+
   return (
     <>
       <header className="header">
         <p>RUEDATA</p>
-        <Button type="button">Nueva mascota</Button>
+        <Button type="button" onClick={handleOpenModal}>Nueva mascota</Button>
       </header>
     </>
   );
