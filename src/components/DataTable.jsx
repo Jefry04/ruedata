@@ -1,6 +1,8 @@
+import { Table } from "@mantine/core";
 import React, { useState } from "react";
 import { deletePet, editPet } from "../utils/fetchData";
 import PublicForm from "./PublicForm";
+import PublicModal from "./PublicModal";
 
 const DataTable = ({ pets }) => {
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -14,11 +16,11 @@ const DataTable = ({ pets }) => {
     setOpenEditModal(true);
     setPetData(petData);
   };
-  
-  const handleEditForm = (event) =>{
+
+  const handleEditForm = (event) => {
     event.preventDefault();
     editPet(petData);
-  }
+  };
   const handleChange = (event) => {
     event.preventDefault();
     setPetData({
@@ -30,7 +32,7 @@ const DataTable = ({ pets }) => {
 
   return (
     <>
-      <table>
+      <Table striped highlightOnHover >
         <thead>
           <tr>
             <th>Nombre</th>
@@ -57,15 +59,19 @@ const DataTable = ({ pets }) => {
               </tr>
             </tbody>
           ))}
-      </table>
-      {openEditModal && (
-        <PublicForm
-          formData={petData}
-          buttonTitle="Editar"
-          handleChange={handleChange}
-          handleForm={handleEditForm}
-        />
-      )}
+      </Table>
+        <PublicModal
+          opened={openEditModal}
+          onClose={() => setOpenEditModal(false)}
+          title={"Editar mascota"}
+        >
+          <PublicForm
+            formData={petData}
+            buttonTitle="Editar"
+            handleChange={handleChange}
+            handleForm={handleEditForm}
+          />
+        </PublicModal>
     </>
   );
 };

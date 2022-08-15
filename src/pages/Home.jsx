@@ -3,49 +3,26 @@ import { useState } from "react";
 import { useEffect } from "react";
 import DataTable from "../components/DataTable";
 import PublicForm from "../components/PublicForm";
+import PublicModal from "../components/PublicModal";
 import { createPet, getAllPets } from "../utils/fetchData";
 
-const mockData = [
-  {
-    _id: "62f8233991111503e8bdc568",
-    name: "Kiara",
-    age: 2,
-    breed: "Cat",
-  },
-  {
-    _id: "2",
-    name: "Spike",
-    age: 3,
-    breed: "Dog",
-  },
-  {
-    _id: "3",
-    name: "Igor",
-    age: 1,
-    breed: "Dog",
-  },
-  {
-    _id: "4",
-    name: "Nemo",
-    age: 5,
-    breed: "Fish",
-  },
-];
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [allPets, setAllPets] = useState([]);
+
   const [formData, setFormData] = useState({
     name: "",
     age: 0,
     breed: "",
   });
 
-  // useEffect(() => {
-  //   getAllPets();
-  // }, []);
+  useEffect(() => {
+    getAllPets().then((response) => setAllPets(response));
+  }, []);
 
   const handleNewPet = (event) => {
     event.preventDefault();
-    createPet(formData)
+    createPet(formData);
     setFormData({
       name: "",
       age: 0,
@@ -67,15 +44,19 @@ const Home = () => {
       <button type="button" onClick={handleOpenModal}>
         Nueva mascota
       </button>
-      <DataTable pets={mockData} />
-      {openModal && (
+      <DataTable pets={allPets} />
+      <PublicModal
+        opened={openModal}
+        onClose={() => setOpenModal(false)}
+        title={"Crear mascota"}
+      >
         <PublicForm
           handleForm={handleNewPet}
           handleChange={handleChange}
           formData={formData}
-          buttonTitle= "Crear mascota"
+          buttonTitle="Crear mascota"
         />
-      )}
+      </PublicModal>
     </>
   );
 };

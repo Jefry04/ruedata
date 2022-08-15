@@ -1,0 +1,15 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    left: 0px;
+    right: 0px;
+    height: 60PX;
+    background-color: #ffffff;
+    padding-left: 1rem;
+    padding-right: 2rem;
+}
+
+.layout__content {
+margin-top: 70px;
+  }

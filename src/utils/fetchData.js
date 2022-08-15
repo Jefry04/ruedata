@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://crudcrud.com/api/9091096872d54fcc85732e325a0d39ec/pet";
+const url = "https://crudcrud.com/api/84d9bc43a21744b6bc4e0935d60df188/pet";
 
 export const getAllPets = async () => {
   try {
