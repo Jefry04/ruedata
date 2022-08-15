@@ -15,7 +15,7 @@ const DataTable = ({ pets = [], setAllPets }) => {
     breed: "",
   });
 
-  const handleEdit = (petData) => {
+  const handleOpenEditModal = (petData) => {
     setOpenEditModal(true);
     setPetData(petData);
   };
@@ -41,7 +41,7 @@ const DataTable = ({ pets = [], setAllPets }) => {
     setOpenDeleteModal(false);
   };
 
-  const handleOpenModal = (petData, id) => {
+  const handleOpenDeleteModal = (petData, id) => {
     setOpenDeleteModal(true);
     setPetData(petData);
     setPetId(id);
@@ -69,14 +69,14 @@ const DataTable = ({ pets = [], setAllPets }) => {
                   <td>
                     <Button
                       type="button"
-                      onClick={() => handleEdit(pet)}
+                      onClick={() => handleOpenEditModal(pet)}
                       className="table-button"
                     >
                       Editar
                     </Button>
                     <Button
                       type="button"
-                      onClick={() => handleOpenModal(pet, pet._id)}
+                      onClick={() => handleOpenDeleteModal(pet, pet._id)}
                       className="table-button"
                     >
                       Borrar
@@ -99,7 +99,6 @@ const DataTable = ({ pets = [], setAllPets }) => {
           handleForm={handleEditForm}
         />
       </PublicModal>
-
       <PublicModal
         opened={openDeleteModal}
         onClose={() => setOpenDeleteModal(false)}

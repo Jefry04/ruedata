@@ -8,7 +8,6 @@ const AppHeader = ({ handleOpenModal }) => {
     <>
       <header className="header">
         <Image src={logo} alt="logo" width={200} height={80} />
-
         <Button type="button" onClick={handleOpenModal}>
           Nueva mascota
         </Button>

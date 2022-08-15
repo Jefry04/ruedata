@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const url = "https://crudcrud.com/api/9535ca5f53144dbda8952097ca6dfc1c/pet";
+//const url = "https://crudcrud.com/api/9535ca5f53144dbda8952097ca6dfc1c/pet";
+
+const url = process.env.REACT_APP_PUBLIC_URL;
 
 export const getAllPets = async () => {
   try {
