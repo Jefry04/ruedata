@@ -1,3 +1,4 @@
+import { Button } from "@mantine/core";
 import React from "react";
 import "../styles/publicForm.css";
 
@@ -46,7 +47,7 @@ const PublicForm = ({ handleForm, handleChange, formData, buttonTitle }) => {
           onChange={handleChange}
         />
       </div>
-      <button type="submit" className="form_button">{buttonTitle}</button>
+      <Button type="submit" className="form_button">{buttonTitle}</Button>
     </form>
   );
 };

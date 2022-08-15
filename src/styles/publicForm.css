@@ -17,7 +17,7 @@ align-items: center;
 }
 .form_input {
   background-color: transparent;
-    color: rgb(193, 194, 197);
+    color: #bdbfc3;
     display: block;
     padding: 6px 8px;
     border: 1px solid #cccccc;
@@ -26,7 +26,4 @@ align-items: center;
 
   .form_button{
     margin-top: 15px;
-    background-color: #7f5af0;
-    color:#fffffe;
-    border-radius: 8%;
   }

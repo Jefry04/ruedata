@@ -23,14 +23,15 @@ const Home = () => {
 
   const handleNewPet = (event) => {
     event.preventDefault();
-    createPet(formData);
+    createPet(formData).then(() =>
+      getAllPets().then((response) => setAllPets(response))
+    );
     setFormData({
       name: "",
       age: 0,
       breed: "",
     });
-    setOpenModal(false)
-    getAllPets().then((response) => setAllPets(response));
+    setOpenModal(false);
   };
 
   const handleChange = (event) => {
@@ -44,7 +45,7 @@ const Home = () => {
 
   return (
     <>
-      <AppHeader handleOpenModal={handleOpenModal}/>
+      <AppHeader handleOpenModal={handleOpenModal} />
       <DataTable pets={allPets} setAllPets={setAllPets} />
       <PublicModal
         opened={openModal}

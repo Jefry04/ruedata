@@ -1,0 +1,17 @@
+.table-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.table{
+    width: 70%;
+    margin-top: 10px;
+}
+.table-message{
+    color: #fffffe;
+}
+.table-button{
+    margin-right: 10px;
+}

@@ -5,10 +5,12 @@
     left: 0px;
     right: 0px;
     height: 60PX;
-    background-color: #ffffff;
+    background-color: #f1f1f1;
     padding-left: 1rem;
     padding-right: 2rem;
+    box-shadow: 20px;
 }
+
 
 .layout__content {
 margin-top: 70px;
